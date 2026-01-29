@@ -8,10 +8,42 @@
         content="AlmostDone is a web-application where you can create, read, update and delete short notes about a things that you forgot to do">
     <title>AlmostDone | Smart list of the things I've almost done</title>
     <link rel="stylesheet" href="/res/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
-
+    <header class="hero">
+        <h1 class="hero__caption">List of the things I've almost done</h1>
+    </header>
+    <main class="app">
+        <ul class="app__list">
+            <li class="app__item">
+                <div class="app__itemname">Wash dishes</div>
+                <div class="app__controls">
+                    <span class="app__minortext">added: 01/01/2025, 13:45</span>
+                    <button class="app__button">delete</button>
+                </div>
+            </li>
+            <li class="app__item">
+                <div class="app__itemname">Clean up</div>
+                <div class="app__controls">
+                    <span class="app__minortext">added: 01/01/2025, 13:45</span>
+                    <button class="app__button">delete</button>
+                </div>
+            </li>
+            <li class="app__item">
+                <div class="app__itemname">Suicide</div>
+                <div class="app__controls">
+                    <span class="app__minortext">added: 01/01/2025, 13:45</span>
+                    <button class="app__button">delete</button>
+                </div>
+            </li>
+        </ul>
+        <button class="app__button">add item</button>
+    </main>
 </body>
 
 </html>
