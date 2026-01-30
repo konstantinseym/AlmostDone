@@ -19,31 +19,28 @@
         <h1 class="hero__caption">List of the things I've almost done</h1>
     </header>
     <main class="app">
-        <ul class="app__list">
-            <li class="app__item">
-                <div class="app__itemname">Wash dishes</div>
-                <div class="app__controls">
-                    <span class="app__minortext">added: 01/01/2025, 13:45</span>
-                    <button class="app__button">delete</button>
-                </div>
-            </li>
-            <li class="app__item">
-                <div class="app__itemname">Clean up</div>
-                <div class="app__controls">
-                    <span class="app__minortext">added: 01/01/2025, 13:45</span>
-                    <button class="app__button">delete</button>
-                </div>
-            </li>
-            <li class="app__item">
-                <div class="app__itemname">Suicide</div>
-                <div class="app__controls">
-                    <span class="app__minortext">added: 01/01/2025, 13:45</span>
-                    <button class="app__button">delete</button>
-                </div>
-            </li>
+        <button class="app__button" id="btnOpenModal">add item</button>
+        <ul class="app__list" id="itemContainer">
         </ul>
-        <button class="app__button">add item</button>
+        <div class="app__modal" id="modalAddItem">
+            <h2 class="modal__caption">add item</h2>
+            <form class="modal__form" id="appForm">
+                <input type="text" class="modal__input" placeholder="type here..." autocomplete="off">
+                <button type="submit" class="app__button">add</button>
+                <button type="button" class="app__button" id="btnCloseModal">back</button>
+            </form>
+        </div>
     </main>
+    <template id="itemTemplate">
+        <li class="app__item">
+            <div class="app__itemname" data-item-content></div>
+            <div class="app__controls">
+                <span class="app__minortext" data-item-date></span>
+                <button class="app__button">delete</button>
+            </div>
+        </li>
+    </template>
+    <script src="/res/main.js"></script>
 </body>
 
 </html>

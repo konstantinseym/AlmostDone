@@ -3,6 +3,7 @@
   --maincolor: #1a3263;
   --bordercolor: #547792;
   --h1font: 300 3.75rem "Space Mono", sans-serif;
+  --h2font: 300 2.5rem "Space Mono", sans-serif;
   --textfont: 300 1.125rem "Space Mono", sans-serif;
   --minorfont: 300 0.875rem "Space Mono", sans-serif;
 }
@@ -71,6 +72,9 @@ h4 {
   font: var(--minorfont);
 }
 .app__button {
+  display: inline-flex;
+  align-items: center;
+  height: 1.75rem;
   font: var(--minorfont);
   color: var(--maincolor);
   border: 1px solid var(--bordercolor);
@@ -80,4 +84,37 @@ h4 {
 .app__button:hover {
   background-color: var(--maincolor);
   color: var(--bgcolor);
+  cursor: pointer;
+}
+.app__modal {
+  display: none;
+  position: fixed;
+  width: 48rem;
+  height: 8rem;
+  z-index: 1;
+  background-color: var(--bgcolor);
+  border: solid 2px var(--bordercolor);
+}
+.app__modal--shown {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.modal__caption {
+  font: var(--h2font);
+  color: var(--maincolor);
+}
+.modal__form {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.modal__input {
+  border: none;
+  outline: none;
+  height: 1.75rem;
+  padding: 0.125rem 0.25rem 0.125rem;
+  font: var(--minorfont);
+  border: 1px solid var(--bordercolor);
 }
