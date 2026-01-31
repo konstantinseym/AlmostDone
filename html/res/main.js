@@ -11,8 +11,12 @@ document.addEventListener("DOMContentLoaded", async () => {
   function closeModal() {
     modalAddItem.classList.remove("app__modal--shown");
   }
-  function deleteItem() {
-    //
+  async function deleteItem(deletingId) {
+    const res = await fetch("/api/deleteitem/" + deletingId, {
+      method: "DELETE",
+      headers: { "content-type": "application/json" },
+      credentials: "include",
+    });
   }
   async function addItem(content) {
     const sendingData = { data: content };
@@ -33,9 +37,18 @@ document.addEventListener("DOMContentLoaded", async () => {
     const template = document.querySelector("#itemTemplate");
     const container = document.querySelector("#itemContainer");
     serverData.forEach((item) => {
+      const currentId = item.id;
       const copy = template.content.cloneNode(true);
+      const li = copy.querySelector(".app__item");
+      li.dataset.id = currentId;
       copy.querySelector("[data-item-content]").textContent = item.content;
       copy.querySelector("[data-item-date]").textContent = item.date;
+      const deleteBtn = copy.querySelector(".deleteBtn");
+      deleteBtn.addEventListener("click", async () => {
+        deleteBtn.disabled = true;
+        await deleteItem(currentId);
+        deleteBtn.disabled = false;
+      });
       container.appendChild(copy);
     });
   }

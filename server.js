@@ -24,13 +24,21 @@ async function createTableIfNotExists() {
 createTableIfNotExists();
 
 app.get("/api/getdata", async (req, res) => {
-  const dbData = await pool.query('SELECT * FROM items');
+  const dbData = await pool.query("SELECT * FROM items");
   res.json(dbData.rows);
 });
 
 app.post("/api/additem", async (req, res) => {
   const clientData = req.body;
-  await pool.query('INSERT INTO items (content, date) VALUES ($1, $2);', [clientData.data, "DATE?"])
-})
+  await pool.query("INSERT INTO items (content, date) VALUES ($1, $2);", [
+    clientData.data,
+    "DATE?",
+  ]);
+});
+
+app.delete("/api/deleteitem/:id", async (req, res) => {
+  const deletingId = req.params.id;
+  await pool.query("DELETE FROM items WHERE id = $1;", [deletingId]);
+});
 
 app.listen(3000);
