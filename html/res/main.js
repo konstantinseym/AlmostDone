@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", async () => {
+  generateItems();
   const btnOpenModal = document.querySelector("#btnOpenModal"),
     appForm = document.querySelector("#appForm"),
     btnCloseModal = document.querySelector("#btnCloseModal"),
@@ -13,8 +14,14 @@ document.addEventListener("DOMContentLoaded", async () => {
   function deleteItem() {
     //
   }
-  function addItem() {
-    //
+  async function addItem(content) {
+    const sendingData = { data: content };
+    const res = await fetch("/api/additem", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      credentials: "include",
+      body: JSON.stringify(sendingData),
+    });
   }
   async function getServerData() {
     const response = await fetch("/api/getdata");
@@ -33,8 +40,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   }
 
-  generateItems();
-
   btnOpenModal.addEventListener("click", () => {
     openModal();
   });
@@ -43,6 +48,11 @@ document.addEventListener("DOMContentLoaded", async () => {
   });
   appForm.addEventListener("submit", (e) => {
     e.preventDefault();
-    addItem();
+    appForm.newItemContent.disabled = true;
+    const newItemContent = appForm.newItemContent.value;
+    addItem(newItemContent);
+    appForm.newItemContent.disabled = false;
+    closeModal();
+    alert("Item added!");
   });
 });
