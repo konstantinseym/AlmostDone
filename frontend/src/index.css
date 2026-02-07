@@ -1,0 +1,27 @@
+:root {
+  --bgcolor: #e8e2db;
+  --maincolor: #1a3263;
+  --bordercolor: #547792;
+  --h1font: 300 3.75rem "Space Mono", sans-serif;
+  --h2font: 300 2.5rem "Space Mono", sans-serif;
+  --textfont: 300 1.125rem "Space Mono", sans-serif;
+  --minorfont: 300 0.875rem "Space Mono", sans-serif;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+    overscroll-behavior: none;
+}
+body {
+    background-color: var(--bgcolor);
+}
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  padding: 0;
+}
