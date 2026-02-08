@@ -1,8 +1,3 @@
-.list {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
 .list__item {
   margin: 1rem;
   font: var(--textfont);
@@ -17,9 +12,6 @@
   height: 1px;
   left: -1rem;
   top: calc(100% + 0.5rem);
-}
-.list__itemname {
-  font: var(--minorfont);
 }
 .list__minorcaption {
   font: var(--minorfont);

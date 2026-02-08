@@ -1,27 +1,27 @@
 import express from "express";
 import pkg from "pg";
+import dotenv from "dotenv";
 
 const app = express();
 const { Pool } = pkg;
 
-app.use(express.static("html"));
 app.use(express.json());
 
+dotenv.config();
+
 const pool = new Pool({
-  user: "konstantin",
-  host: "localhost",
-  database: "almostdone",
-  password: "purplE43&%eternitY",
-  port: 5432,
+  user: process.env.DB_USER,
+  host: process.env.DB_HOST,
+  database: process.env.DB_NAME,
+  password: process.env.DB_PASSWORD,
+  port: process.env.DB_PORT,
 });
 
-async function createTableIfNotExists() {
+(async () => {
   await pool.query(
-    "CREATE TABLE IF NOT EXISTS items (id SERIAL PRIMARY KEY, content TEXT, date TEXT);",
+    "CREATE TABLE IF NOT EXISTS items (id SERIAL PRIMARY KEY, content TEXT, date TEXT);"
   );
-}
-
-createTableIfNotExists();
+})();
 
 app.get("/api/getdata", async (req, res) => {
   const dbData = await pool.query("SELECT * FROM items");
