@@ -1,0 +1,8 @@
+input {
+  border: none;
+  outline: none;
+  height: 1.75rem;
+  padding: 0.125rem 0.25rem 0.125rem;
+  font: var(--minorfont);
+  border: 1px solid var(--bordercolor);
+}

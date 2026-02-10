@@ -19,7 +19,7 @@ const pool = new Pool({
 
 (async () => {
   await pool.query(
-    "CREATE TABLE IF NOT EXISTS items (id SERIAL PRIMARY KEY, content TEXT, date TEXT);"
+    "CREATE TABLE IF NOT EXISTS items (id SERIAL PRIMARY KEY, content TEXT, date TEXT);",
   );
 })();
 
@@ -34,11 +34,13 @@ app.post("/api/additem", async (req, res) => {
     clientData.data,
     "DATE?",
   ]);
+  res.status(200).json({ message: "item added!" });
 });
 
 app.delete("/api/deleteitem/:id", async (req, res) => {
   const deletingId = req.params.id;
   await pool.query("DELETE FROM items WHERE id = $1;", [deletingId]);
+  res.status(200).json({ message: "item deleted!" });
 });
 
 app.listen(3000);

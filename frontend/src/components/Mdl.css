@@ -1,0 +1,33 @@
+.mdl {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.mdl--hidden {
+  display: none;
+}
+.mdl__container {
+  width: 400px;
+  padding: 2rem;
+  background-color: var(--bgcolor);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+.mdl__caption {
+  font: var(--h2font);
+  color: var(--maincolor);
+}
+.mdl__form {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
